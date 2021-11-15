@@ -1,2 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css" />
+  <title>My Medium</title>
+</head>
+<body>
 
-<h1>hi</h1>
+  <section class="section">
+    <div class="container">
+
+      <!-- navbar -->
+      <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+          <a class="navbar-item" href="https://bulma.io">
+            <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
+          </a>
+
+          <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+            data-target="navbarBasicExample">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
+        </div>
+
+        <div id="navbarBasicExample" class="navbar-menu">
+          <div class="navbar-start">
+            <a class="navbar-item">
+              首頁
+            </a>
+
+            <div class="navbar-item has-dropdown is-hoverable">
+              <a class="navbar-link">
+                More
+              </a>
+
+              <div class="navbar-dropdown">
+                <a class="navbar-item">
+                  About
+                </a>
+                <a class="navbar-item">
+                  Jobs
+                </a>
+                <a class="navbar-item">
+                  Contact
+                </a>
+                <hr class="navbar-divider">
+                <a class="navbar-item">
+                  Report an issue
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="navbar-end">
+            <div class="navbar-item">
+              <div class="buttons">
+                <a class="button is-primary">
+                  <strong>註冊</strong>
+                </a>
+                <a class="button is-light">
+                  登入
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <!-- navbar -->
+
+      <section class="columns">
+        <!-- left -->
+        <section class="column">
+          <article>
+            <figure class="image">
+              <img src="https://fakeimg.pl/350x150/f0f0f0" alt="">
+            </figure>
+            <h2 class="title is-5">Creating a Pipeline to True Workplace Diversity</h2>
+            <p class="content">Providing resources, offering acceptance, and involving people of color are keys to making your company more diverse...</p>
+            <footer>
+              <p>Arielle Wiltz in Modus</p>
+              <p>Aug 7</p>
+            </footer>
+          </article>
+        </section>
+        <!-- left -->
+        <!-- middle -->
+        <section class="column">
+          <article class="media">
+            <figure class="media-left">
+              <img src="https://fakeimg.pl/100x100/">
+            </figure>
+            <div class="media-content">
+              <h2 class="title is-5">I Worked for an Amish Reality TV Show</h2>
+              <footer>
+                <p>Arielle Wiltz in Modus</p>
+                <p>Aug 7</p>
+              </footer>
+            </div>
+          </article>
+          <article class="media">
+            <figure class="media-left">
+              <img src="https://fakeimg.pl/100x100/">
+            </figure>
+            <div class="media-content">
+              <h2 class="title is-5">I Worked for an Amish Reality TV Show</h2>
+              <footer>
+                <p>Arielle Wiltz in Modus</p>
+                <p>Aug 7</p>
+              </footer>
+            </div>
+          </article>
+          <article class="media">
+            <figure class="media-left">
+              <img src="https://fakeimg.pl/100x100/">
+            </figure>
+            <div class="media-content">
+              <h2 class="title is-5">I Worked for an Amish Reality TV Show</h2>
+              <footer>
+                <p>Arielle Wiltz in Modus</p>
+                <p>Aug 7</p>
+              </footer>
+            </div>
+          </article>
+        </section>
+        <!-- middle -->
+        <!-- right -->
+        <section class="column">
+          <article>
+            <figure class="image">
+              <img src="https://fakeimg.pl/350x200/f0f0f0" alt="">
+            </figure>
+            <h2 class="title is-5">Creating a Pipeline to True Workplace Diversity</h2>
+            <p class="content">Providing resources, offering acceptance, and involving people of color are keys to making your company more diverse...</p>
+            <footer>
+              <p>Arielle Wiltz in Modus</p>
+              <p>Aug 7</p>
+            </footer>
+          </article>
+        </section>
+        <!-- right -->
+      </section>
+
+      <hr>
+
+      <section class="columns">
+        <!-- article list -->
+        <section class="column is-two-thirds">
+        <% @stories.each do |story| %>
+          <article class="media">
+            <div class="media-content">
+              <h2 class="title is-4"><%= link_to story.title , story_page_path(story.user.username, story) ,class: 'has-text-grey-dark' %></h2>
+              <p class="content"><%= strip_tags(story.content).truncate(50) %></p>
+              <footer>
+                <p><%= link_to story.user.username, user_page_path(story.user.username) ,class: 'has-text-grey-dark' %></p> 
+                <%= time_ago_in_words(story.updated_at) %>
+              </footer>
+            </div>
+             <% if story.cover_image.attached? %>
+              <figure class="media-right">
+                <%= image_tag story.cover_image.variant(resize: '150x150') %>
+              </figure>
+            <% end %>
+          </article>
+          <% end %>
+        </section>
+        <!-- article list -->
+
+        <section class="column">
+          <h2 class="title is-4">Popular on Medium</h2>
+          <hr>
+
+          <article class="media">
+            <div class="media-left">01</div>
+            <div class="media-content">
+              <h3>Difficult Conversation Lessons From a Psychologist Who’s Been Dealing With People</h3>
+              <footer>
+                <p>Thomas Oppong</p>
+              </footer>
+            </div>
+          </article>
+
+          <article class="media">
+            <div class="media-left">02</div>
+            <div class="media-content">
+              <h3>Difficult Conversation Lessons From a Psychologist Who’s Been Dealing With People</h3>
+              <footer>
+                <p>Thomas Oppong</p>
+              </footer>
+            </div>
+          </article>
+
+          <article class="media">
+            <div class="media-left">03</div>
+            <div class="media-content">
+              <h3>Difficult Conversation Lessons From a Psychologist Who’s Been Dealing With People</h3>
+              <footer>
+                <p>Thomas Oppong</p>
+              </footer>
+            </div>
+          </article>
+
+          <article class="media">
+            <div class="media-left">04</div>
+            <div class="media-content">
+              <h3>Difficult Conversation Lessons From a Psychologist Who’s Been Dealing With People</h3>
+              <footer>
+                <p>Thomas Oppong</p>
+              </footer>
+            </div>
+          </article>
+
+          <article class="media">
+            <div class="media-left">05</div>
+            <div class="media-content">
+              <h3>Difficult Conversation Lessons From a Psychologist Who’s Been Dealing With People</h3>
+              <footer>
+                <p>Thomas Oppong</p>
+              </footer>
+            </div>
+          </article>
+        </section>
+      </section>
+    </div>
+  </section>
+</body>
+</html>

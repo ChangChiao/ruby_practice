@@ -11,28 +11,23 @@
   </div>
 
   <div id="navbarBasicExample" class="navbar-menu">
-    <div class="navbar-start">
-      <a class="navbar-item">
-        Home
-      </a>
-
-      <a class="navbar-item">
-        Documentation
-      </a>
-    </div>
-
     <div class="navbar-end">
       <div class="navbar-item">
         <div class="buttons">
         <% if user_signed_in? %>
         <div class="navbar-item has-dropdown is-hoverable">
         <a class="navbar-link">
+          <%= content_tag :i, "", class: 'fas fa-crown has-text-primary' if current_user.vip_user? %>
+           <%= content_tag :i, "", class: 'fas fa-crown has-text-danger' if current_user.platinum_user? %>
+          <%= avatar(current_user, size:50) %>
           <%= current_user.email%>
         </a>
 
         <div class="navbar-dropdown">
           <%= link_to '新增故事', new_story_path, class:'navbar-item' %>
           <%= link_to '全部故事列表', stories_path, class:'navbar-item' %>
+          <hr class="navbar-divider">
+          <%= link_to "會員昇級", pricing_users_path, class: 'navbar-item' unless current_user.paid_user? %>
           <%= link_to "個人資料", edit_user_registration_path, class: 'navbar-item'%>
           <hr class="navbar-divider">
           <%= link_to "log out", destroy_user_session_path, class: 'navbar-item', 
@@ -43,14 +38,8 @@
         
        
         <% else %>
-        <%= link_to "sign up", new_user_registration_path ,class: 'button is-primary' %>
-          <%# <a class="button is-primary">
-            <strong>Sign up</strong>
-          </a> %>
-           <%= link_to "Log in", new_user_session_path ,class: 'button is-light' %>
-          <%# <a class="button is-light">
-            Log in
-          </a> %>
+        <%= link_to "註冊", new_user_registration_path ,class: 'button is-primary' %>
+           <%= link_to "登入", new_user_session_path ,class: 'button is-light' %>
         <% end %>
         </div>
       </div>

@@ -8,12 +8,17 @@ gem 'rails', '~> 6.0.3', '>= 6.0.3.4'
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
 
+gem 'mini_magick', '~> 4.10', '>= 4.10.1'
+
 # Use Puma as the app server
 gem 'puma', '~> 4.1'
 gem 'devise', '~> 4.7', '>= 4.7.3'
 gem 'aasm', '~> 5.0', '>= 5.0.6'
 gem 'friendly_id', '~> 5.4'
 gem 'babosa', '~> 1.0', '>= 1.0.4'
+gem 'paranoia', '~> 2.4', '>= 2.4.2'
+gem 'figaro', '~> 1.2'
+gem "braintree", "~> 2.104.1"
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
@@ -36,6 +41,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'hirb-unicode', '~> 0.0.5'
 end
 
 group :development do
@@ -45,6 +51,7 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'foreman', '~> 0.87.2'
 end
 
 group :test do

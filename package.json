@@ -2,14 +2,19 @@
   "name": "my_medium",
   "private": true,
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.1",
     "@rails/actioncable": "^6.0.0",
     "@rails/activestorage": "^6.0.0",
     "@rails/ujs": "^6.0.0",
     "@rails/webpacker": "4.3.0",
+    "axios": "^0.21.0",
+    "bulma": "^0.9.1",
+    "stimulus": "^1.1.1",
     "turbolinks": "^5.2.0"
   },
   "version": "0.1.0",
   "devDependencies": {
+    "froala-editor": "^3.2.3",
     "webpack-dev-server": "^3.11.0"
   }
 }
